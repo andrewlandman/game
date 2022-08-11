@@ -1,4 +1,4 @@
-#include "camera.hpp"
+#include "Camera.hpp"
 
 Camera::Camera(scene::ISceneManager* sceneManager) {
     mCamera = sceneManager->addCameraSceneNode();
