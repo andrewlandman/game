@@ -1,0 +1,6 @@
+main
+build/
+dep/
+include/
+lib/
+spike/
