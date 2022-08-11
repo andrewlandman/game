@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.2)
 
 project(game)
 
+set(CMAKE_CXX_STANDARD 17)
+
 add_executable(main
     main.cpp
     Camera.cpp
@@ -13,8 +15,7 @@ target_include_directories(main PUBLIC
 )
 
 target_link_libraries(main PUBLIC
-    /Users/andrew/Desktop/game/lib/libIrrlicht.a
-    #lib/libIrrlicht.a    
+    ${CMAKE_SOURCE_DIR}/lib/libIrrlicht.a
     "-framework OpenGL"
     "-framework Cocoa"
     "-framework IOKit"
