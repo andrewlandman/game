@@ -1,11 +1,12 @@
 #include "Camera.hpp"
 
-Camera::Camera(scene::ISceneManager* sceneManager) {
+Camera::Camera(scene::ISceneManager* sceneManager, irr::core::vector3df position) {
     mCamera = sceneManager->addCameraSceneNode();
 
     mNode = sceneManager->addSphereSceneNode();
     mNode->setMaterialFlag(video::EMF_LIGHTING, true);
     mNode->getMaterial(0).EmissiveColor.set(255, 255, 0, 0);
+    mNode->setPosition(position);
 }
 
 void Camera::update(irr::core::vector3df offset) {

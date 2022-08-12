@@ -1,23 +1,5 @@
 #include "Scene.hpp"
 
-void generateSpheres(scene::ISceneManager* sceneManager) {
-    for (size_t i = 0; i < 100; i++) {
-        scene::IMeshSceneNode* node = sceneManager->addSphereSceneNode(5);
-        node->setMaterialFlag(video::EMF_LIGHTING, true);
-        node->getMaterial(0).EmissiveColor.set(
-            255,
-            rand() % 255,
-            rand() % 255,
-            rand() % 255
-        );
-        node->setPosition(core::vector3df(
-            rand() % 100,
-            rand() % 100,
-            rand() % 100
-        ));
-    }
-}
-
 Scene::Scene(scene::ISceneManager* sceneManager)
     :
     mSceneManager(sceneManager)
@@ -25,7 +7,15 @@ Scene::Scene(scene::ISceneManager* sceneManager)
 
 void Scene::initialize() {
     // Add spheres
-    generateSpheres(mSceneManager);
+    mNode1 = mSceneManager->addSphereSceneNode(5);
+    mNode1->setMaterialFlag(video::EMF_LIGHTING, true);
+    mNode1->getMaterial(0).EmissiveColor.set(255, 255, 0, 0);
+    mNode1->setPosition(core::vector3df(100, 0, 0));
+
+    mNode2 = mSceneManager->addSphereSceneNode(5);
+    mNode2->setMaterialFlag(video::EMF_LIGHTING, true);
+    mNode2->getMaterial(0).EmissiveColor.set(255, 0, 0, 255);
+    mNode2->setPosition(core::vector3df(-100, 0, 0));
 
     // Add cube
     scene::ISceneNode* cube = mSceneManager->addCubeSceneNode();
@@ -50,5 +40,12 @@ void Scene::initialize() {
     );
 }
 
-void Scene::update() {
+void Scene::update(uint32_t dt) {
+    core::vector3df pos1 = mNode1->getPosition();
+    pos1.X -= 0.01*dt;
+    mNode1->setPosition(pos1);
+
+    core::vector3df pos2 = mNode2->getPosition();
+    pos2.X += 0.01*dt;
+    mNode2->setPosition(pos2);
 }

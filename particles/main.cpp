@@ -1,5 +1,6 @@
 #include "irrlicht.h"
 
+#include <iostream>
 #include <time.h>
 
 #include "Camera.hpp"
@@ -32,17 +33,34 @@ int main()
     Scene scene(sceneManager);
     scene.initialize();
 
-    Camera camera(sceneManager);
+    Camera camera(sceneManager, irr::core::vector3df(0.0, 0.0, -200.0));
     InputHandler inputHandler(receiver, camera);
+
+    uint32_t deltaTime   = 0;
+    uint32_t lastTime    = device->getTimer()->getTime();
+    uint32_t targetTime  = 30;
+    uint32_t accumulator = 0;
 
     while(device->run())
     {
+        // output
         driver->beginScene(true, true, video::SColor(0,0,0,0));
         sceneManager->drawAll();
         driver->endScene();
 
+        deltaTime = device->getTimer()->getTime() - lastTime;
+        lastTime += deltaTime;
+        accumulator += deltaTime;
+
+        // input
         inputHandler.handleInput();
-        scene.update();
+
+        // update
+        while (accumulator > targetTime) {
+            std::cout << targetTime << " " << accumulator << std::endl;
+            scene.update(targetTime);
+            accumulator -= targetTime;
+        }
     }
 
     device->drop();

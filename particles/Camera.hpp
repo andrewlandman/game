@@ -9,7 +9,7 @@ using namespace scene;
 
 class Camera {
 public:
-    Camera(scene::ISceneManager* sceneManager);
+    Camera(scene::ISceneManager* sceneManager, irr::core::vector3df position);
     void update(irr::core::vector3df offset);
     void move(irr::core::vector3df vel);
     void rotate(irr::core::vector3df rot);
