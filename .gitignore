@@ -4,3 +4,4 @@ dep/
 include/
 lib/
 spike/
+*.swp

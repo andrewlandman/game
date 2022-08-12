@@ -5,3 +5,4 @@ project(irrprojects)
 set(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(cockpit)
+add_subdirectory(particles)
