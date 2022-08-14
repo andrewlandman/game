@@ -5,6 +5,7 @@ add_executable(particles
     Camera.cpp
     EventReceiver.cpp
     InputHandler.cpp
+    Quaternion.cpp
     Scene.cpp
 )
 
