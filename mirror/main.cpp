@@ -55,7 +55,6 @@ int main()
 
         // update
         while (accumulator > targetTime) {
-            //std::cout << targetTime << " " << accumulator << std::endl;
             scene.update(targetTime);
             accumulator -= targetTime;
         }

@@ -1,5 +1,4 @@
 #include "EventReceiver.hpp"
-#include <iostream>
 
 EventReceiver::EventReceiver() {
     for (size_t i = 0; i < irr::KEY_KEY_CODES_COUNT; i++)
@@ -7,8 +6,6 @@ EventReceiver::EventReceiver() {
 }
 
 bool EventReceiver::OnEvent(const irr::SEvent &event) {
-    //std::cout << "key: " << event.KeyInput.Key << std::endl;
-    //std::cout << "key: " << event.JoystickEvent.Joystick << std::endl;
     if (event.EventType == irr::EET_KEY_INPUT_EVENT) {
         keys[event.KeyInput.Key] = event.KeyInput.PressedDown;
         return true;

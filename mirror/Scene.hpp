@@ -19,7 +19,6 @@ private:
     scene::ISceneManager* mSceneManager; 
     scene::IMeshSceneNode* mNode1;
     scene::IMeshSceneNode* mNode2;
-    scene::ISceneNode* mCube;
     scene::ISceneNode* mPlane;
     video::ITexture* mRT;
     scene::ICameraSceneNode* mFixedCamera;
